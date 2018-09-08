@@ -1,0 +1,51 @@
+Por que el signo * tiene otras funciones, hay que pasarlo con comillas simples para que el sistema lo tome como signo de multiplicacion 7 '*' 3
+
+#!/bin/bash
+
+#!/bin/bash
+#MULTIPLICA
+
+n=$1
+digits="${#n}"
+multiplica=1
+
+for((i = 0 ; i < digits; i++ ))
+do
+div=`expr $n % 10`
+multiplica=`expr $multiplica \* $div`
+n=`expr $n / 10`
+done
+echo $multiplica
+
+#!/bin/bash
+#PROMEDIO
+
+suma=`expr $suma + $1 + $2 + $3 + $4 + $5`
+echo `expr $suma / 5` 
+
+/.promedio5.sh 100 1 2 3 4 >> resultado
+cat resultado
+22 
+
+#arch1
+El miedo lado
+El miedo lado
+oscuro de la
+ira, del odio,
+del Sufrimiento .
+#arch2
+el camino hacia.
+El miedo lleva
+la ira lleva
+odio lleva al
+miedo en ti.https://www.youtube.com/watch?v=Sk5I2gz-Jvc
+#script
+#!/bin/bash
+#junta 
+`paste $1 $2 >> arch3`
+El miedo lado	el camino hacia.
+El miedo lado	El miedo lleva
+oscuro de la	la ira lleva
+ira, del odio,	odio lleva al
+del Sufrimiento .	miedo en ti.https://www.youtube.comwatch?v=Sk5I2gz-Jvc
+

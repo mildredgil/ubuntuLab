@@ -1,0 +1,21 @@
+Tiempo promedio de ejecucion y desviacion standar de los siguientes programa :
+Programa: gcc
+-promedio: 8.8
+-desviacion estandar:7.46324
+
+Programa: frozenball
+-promedio: 13.2
+-desviacion estandar:8.44985
+
+Programa: firefox
+-promedio: 8.2
+-desviacion estandar:11.0045
+
+Programa: terminal
+-promedio: 5
+-desviacion estandar:11.5585
+
+Programa: xilinx
+-promedio: 13.6
+-desviacion estandar:12.8219
+
