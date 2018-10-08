@@ -1,0 +1,112 @@
+1----------------------------
+sudo su
+groupadd Mexico
+useradd -m -g Mexico PeñaNieto
+cat /etc/groups
+
+total 32
+drwxr-xr-x  2 Fox            Mexico  4096 sep 12 10:38 Fox
+drwxr-xr-x  2 Ivanka         EU      4096 sep 12 10:38 Ivanka
+drwxr-xr-x  2 Melania        EU      4096 sep 12 10:38 Melania
+drwxr-xr-x 20 mildred        mildred 4096 sep 12 10:08 mildred
+drwxr-xr-x  2 PeñaNieto      Mexico  4096 sep 12 10:37 PeñaNieto
+drwxr-xr-x  2 QueenElizabeth Britain 4096 sep 12 10:38 QueenElizabeth
+drwxr-xr-x  2 TheresaMay     Britain 4096 sep 12 10:38 TheresaMay
+drwxr-xr-x  2 Trump          EU      4096 sep 12 10:38 Trump
+2--------------------
+userdel -r Trump
+userdel -r PeñaNieto
+...
+groupdel Mexico
+groupdel EU
+groupdel Britain
+
+ls -l /home
+total 4
+drwxr-xr-x 20 mildred mildred 4096 sep 12 10:08 mildred
+3---------------------------------------
+whoami 
+echo "hola" > prueba
+exit
+whoami
+echo "mundo" >> prueba
+ls -l prueba
+sudo su root
+chown mildred:mildred prueba
+exit
+echo "mundo" >> prueba
+cat prueba 
+
+4--------------------------------------------
+ifconfig -a
+enp3s0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether 18:db:f2:11:33:f8  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 2912  bytes 843183 (843.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2912  bytes 843183 (843.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp2s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.15.91.129  netmask 255.255.240.0  broadcast 10.15.95.255
+        inet6 fe80::8f2:7c9f:a1fd:6364  prefixlen 64  scopeid 0x20<link>
+        ether 84:ef:18:66:2e:11  txqueuelen 1000  (Ethernet)
+        RX packets 26451  bytes 19863839 (19.8 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 17921  bytes 5755080 (5.7 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+iwconfig 
+lo        no wireless extensions.
+
+enp3s0    no wireless extensions.
+
+wlp2s0    IEEE 802.11  ESSID:"ITESM"  
+          Mode:Managed  Frequency:5.18 GHz  Access Point: 2C:5A:0F:17:AF:8F   
+          Bit Rate=180 Mb/s   Tx-Power=17 dBm   
+          Retry short limit:7   RTS thr:off   Fragment thr:off
+          Encryption key:off
+          Power Management:on
+          Link Quality=52/70  Signal level=-58 dBm  
+          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:1   Missed beacon:0
+
+5-----------------------------------------------
+ifconfig wlp2s0 up
+6----------------------------------------------
+wlp2s0 up
+RTNETLINK answers: File exists
+7---------------------------------------------
+ifconfig wlp2s0
+wlp2s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.15.91.129  netmask 255.255.240.0  broadcast 10.15.95.255
+        inet6 fe80::8f2:7c9f:a1fd:6364  prefixlen 64  scopeid 0x20<link>
+        ether 84:ef:18:66:2e:11  txqueuelen 1000  (Ethernet)
+        RX packets 28145  bytes 20095862 (20.0 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 20083  bytes 6108913 (6.1 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+8
+9
+10--------------------------
+rsync -avz /home/mildred/orig /home/mildred/dest #copia
+echo "prueba" >> exaile-0.3.0.1/README                     #escritura en el orig
+rsync -avz /home/mildred/orig /home/mildred/dest #sincronizacion
+
+#output
+sending incremental file list
+orig/exaile-0.3.0.1/README
+
+sent 12,449 bytes  received 118 bytes  25,134.00 bytes/sec
+total size is 7,488,353  speedup is 595.87
+
+
+

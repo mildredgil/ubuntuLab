@@ -1,0 +1,25 @@
+/* archivo 'aritReal.c' es  almacenado en el directorio 'objetos'  */
+#include <stdio.h>
+/* función que suma dos números. */
+
+float suma(float a, float b){
+   return(a+b);
+}
+ 
+/* función que resta 'b' a 'a' */
+
+float resta(float a, float b) {
+  return(a-b);
+}
+
+/* función que multiplica dos números */
+
+float multiplica(float a, float b){
+  return(a*b);
+}
+
+/*función que divide 'a' por 'b'*/
+
+float divide(float a, float b) {
+  return(a/b);
+}
