@@ -1,0 +1,73 @@
+--- fusionar_org.c	2018-10-10 11:21:02.606026559 -0500
++++ fusionar.c	2018-10-10 12:39:42.171781786 -0500
+@@ -1,9 +1,9 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <sys/____.h>              /* open() */
+-#include <sys/____.h>              /* open() */
+-#include <____.h>               /* open() */
+-#include <____.h>               /* read() y write() , close() */
++#include <sys/types.h>              /* open() */
++#include <sys/stat.h>              /* open() */
++#include <fcntl.h>               /* open() */
++#include <unistd.h>               /* read() y write() , close() */
+ 
+ char buffer[BUFSIZ]; /*Buffer para manipular datos. */
+ 
+@@ -13,9 +13,9 @@
+    int i;
+ 
+    /*Analisis de los argumentos de la linea de comandos*/
+-   if (argc <= ____) {
+-     fprintf(stderr,"Forma de uso: %s ______ \n", argv[____]);
+-     exit(____);
++   if (argc <= 3) {
++     fprintf(stderr,"Forma de uso: %s <archivo1> <archivo2> <salida> \n", argv[0]);
++     exit(-1);
+    }
+ 
+    /* Apertura o creacion de archivos en modo solo escritura. */
+@@ -23,26 +23,26 @@
+    /* Si el archivo existe entonces truncar a cero bytes (O_TRUNC)*/
+    /* El archivo es creado en caso de que no exista (O_CREAT). */
+    /* El modo que se crea es 0666. */
+-   if ((fd_destino= ____(argv[____-1], O_WRONLY|O_TRUNC|O_CREAT, 0666))==-1) {
++   if ((fd_destino= open(argv[argc-1], O_WRONLY|O_TRUNC|O_CREAT, 0666))==-1) {
+       fprintf(stderr,"Error al crear el archivo de salida \n");
+      perror(argv[3]);
+-     exit(____);
++     exit(-1);
+    }
+ 
+-   for(____;i<3;i++)  {
++   for(i = 1;i<3;i++)  {
+ 
+-   /*Apertura del archivo 1 en modo solo lectura (O_RDONLY). */
+-   if ((fd_origen=open(____,O_RDONLY))== -1) {
+-      fprintf(stderr,"Error al abrir el archivo de entrada: %s ¥n", ____);
+-      perror(argv[1]);
+-      exit(____);
++        /*Apertura del archivo 1 en modo solo lectura (O_RDONLY). */
++        if ((fd_origen=open(argv[i],O_RDONLY))== -1) {
++            fprintf(stderr,"Error al abrir el archivo de entrada: %s ¥n", argv[i]);
++            perror(argv[1]);
++            exit(-1);
++        }
++
++        /* copiamos el archivo 1 en el archivo destino. */
++        while ((nbytes=read(fd_origen, buffer, sizeof buffer))> 0)
++            write(fd_destino, buffer, nbytes);
++     close(fd_origen);
+    }
+ 
+-   /* copiamos el archivo 1 en el archivo destino. */
+-   while ((nbytes=read(____, buffer, sizeof buffer))> 0)
+-     write(____, buffer, nbytes);
+-     close(____);
+-   }
+-
+-   close(____);
+-}
++   close(fd_destino);
++}
+\ No newline at end of file
